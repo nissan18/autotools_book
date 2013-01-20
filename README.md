@@ -1,4 +1,4 @@
 autotools
 =========
 
-Sample code from the autotools book (more details in readme)
+Sample code from the book: Autotools -- A practitioner's guide to Gnu Autoconf, Automake, and Libtool
