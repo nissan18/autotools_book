@@ -10,5 +10,9 @@ check: all
 clean:
 	-rm jupiter
 
+install:
+	cp jupiter /usr/bin
+	chown root:root /usr/bin/jupiter
+	chmod +x /usr/bin/jupiter
 
-.PHONY: all clean check
+.PHONY: all clean check install
