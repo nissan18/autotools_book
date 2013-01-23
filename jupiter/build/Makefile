@@ -12,8 +12,8 @@ exec_prefix	= ${prefix}
 bindir		= ${exec_prefix}/bin
 
 # VPATH-specific substitution variables
-srcdir		= .
-
+srcdir		= ..
+VPATH		= ..
 
 export prefix
 export exec_prefix

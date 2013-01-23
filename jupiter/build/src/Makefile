@@ -12,15 +12,15 @@ exec_prefix	= ${prefix}
 bindir		= ${exec_prefix}/bin
 
 # VPATH-related substitution variables
-srcdir		= .
-
+srcdir		= ../../src
+VPATH		= ../../src
 
 CFLAGS = -g -O0
 
 all: jupiter
 
 jupiter: main.c
-	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $(srcdir) main.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $(srcdir)/main.c
 
 check: all
 	./jupiter | grep "Hello from .*jupiter!"
