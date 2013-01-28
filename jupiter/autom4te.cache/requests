@@ -24,6 +24,7 @@
                         'AC_CONFIG_LIBOBJ_DIR' => 1,
                         'AC_FC_SRCEXT' => 1,
                         'AC_CANONICAL_HOST' => 1,
+                        'AC_DEFUN' => 1,
                         'AC_PROG_LIBTOOL' => 1,
                         'AM_INIT_AUTOMAKE' => 1,
                         'AM_PATH_GUILE' => 1,
@@ -36,6 +37,7 @@
                         'm4_sinclude' => 1,
                         'LT_SUPPORTED_TAG' => 1,
                         'AM_MAINTAINER_MODE' => 1,
+                        'AC_DEFUN_ONCE' => 1,
                         'AM_NLS' => 1,
                         'AC_FC_PP_DEFINE' => 1,
                         'AM_GNU_GETTEXT_INTL_SUBDIR' => 1,
@@ -65,6 +67,7 @@
                         'sinclude' => 1,
                         'AM_PROG_CC_C_O' => 1,
                         'm4_pattern_allow' => 1,
+                        '_AM_AUTOCONF_VERSION' => 1,
                         'AM_XGETTEXT_OPTION' => 1,
                         'AC_CANONICAL_SYSTEM' => 1,
                         'AM_CONDITIONAL' => 1,
@@ -74,6 +77,7 @@
                         'm4_include' => 1,
                         'AC_PROG_CC' => 1,
                         '_AM_COND_ELSE' => 1,
+                        'AU_DEFUN' => 1,
                         'AC_SUBST_TRACE' => 1
                       }
                     ], 'Autom4te::Request' )
