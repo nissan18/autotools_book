@@ -37,7 +37,7 @@ clean:
 	-rm jupiter
 
 install:
-	$(INSTALL) -d $(DESTDIR)$(bindir)/jupiter
+	$(INSTALL) -d $(DESTDIR)$(bindir)
 	$(INSTALL_PROGRAM) -m 0755 jupiter $(DESTDIR)$(bindir)/jupiter
 
 uninstall:
