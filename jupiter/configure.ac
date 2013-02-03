@@ -17,17 +17,29 @@ AC_SEARCH_LIBS([pthread_create], [pthread], [have_pthreads=yes])
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h pthread.h])
 
+# Checks for command-line options.
+AC_ARG_ENABLE([async_exec],
+	[  --disable-async-exec    disable async execution feature],
+	[async_exec=${enableval}], [async_exec=yes])
+
 if test "x${have_pthreads}" = xyes; then
 	AC_CHECK_HEADERS([pthread.h], [], [have_pthreads=no])
 fi
 
 if test "x${have_pthreads}" = xno; then
-	AC_MSG_ERROR([
+	if test "x${async_exec}" = xyes; then
+		AC_MSG_WARN([
 	------------------------------------------
 	 The pthread library and header file
 	 required to build jupiter. Stopping...
 	 Check 'config.log' for more information.
 	------------------------------------------])
+	fi
+	async_exec=no
+fi
+
+if test "x${async_exec}" = xyes; then
+	AC_DEFINE([ASYNC_EXEC], 1, [async execution enabled])
 fi
 
 # Checks for typedefs, structures, and compiler characteristics.

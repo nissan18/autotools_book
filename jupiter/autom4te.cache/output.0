@@ -678,6 +678,7 @@ SHELL'
 ac_subst_files=''
 ac_user_opts='
 enable_option_checking
+enable_async_exec
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1292,6 +1293,12 @@ if test -n "$ac_init_help"; then
      short | recursive ) echo "Configuration of Jupiter 1.0:";;
    esac
   cat <<\_ACEOF
+
+Optional Features:
+  --disable-option-checking  ignore unrecognized --enable/--with options
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+  --disable-async-exec    disable async execution feature
 
 Some influential environment variables:
   CC          C compiler command
@@ -3408,6 +3415,15 @@ fi
 done
 
 
+# Checks for command-line options.
+@%:@ Check whether --enable-async_exec was given.
+if test "${enable_async_exec+set}" = set; then :
+  enableval=$enable_async_exec; async_exec=${enableval}
+else
+  async_exec=yes
+fi
+
+
 if test "x${have_pthreads}" = xyes; then
 	for ac_header in pthread.h
 do :
@@ -3426,16 +3442,27 @@ done
 fi
 
 if test "x${have_pthreads}" = xno; then
-	{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: 
+	if test "x${async_exec}" = xyes; then
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: 
 	------------------------------------------
-	 Unable to find pthreads on this system.
-	 Building a single-threaded version.
+	 The pthread library and header file
+	 required to build jupiter. Stopping...
+	 Check 'config.log' for more information.
 	------------------------------------------" >&5
 $as_echo "$as_me: WARNING: 
 	------------------------------------------
-	 Unable to find pthreads on this system.
-	 Building a single-threaded version.
+	 The pthread library and header file
+	 required to build jupiter. Stopping...
+	 Check 'config.log' for more information.
 	------------------------------------------" >&2;}
+	fi
+	async_exec=no
+fi
+
+if test "x${async_exec}" = xyes; then
+	
+$as_echo "@%:@define ASYNC_EXEC 1" >>confdefs.h
+
 fi
 
 # Checks for typedefs, structures, and compiler characteristics.
