@@ -1298,7 +1298,7 @@ Optional Features:
   --disable-option-checking  ignore unrecognized --enable/--with options
   --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
   --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
-  --disable-async-exec    disable async execution feature
+  --disable-async-exec    disable asynchronous execution @<:@default: no@:>@
 
 Some influential environment variables:
   CC          C compiler command
