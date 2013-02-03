@@ -17,6 +17,7 @@ srcdir		= .
 
 # Tool-specific substitution variables
 CC		= gcc
+LIBS		= -lpthread 
 CFLAGS		= -g -O2
 CPPFLAGS	= 
 INSTALL		= /usr/bin/install -c
@@ -27,7 +28,7 @@ INSTALL_SCRIPT	= ${INSTALL}
 all: jupiter
 
 jupiter: main.c
-	$(CC) $(CPPFLAGS) $(CFLAGS) -I. -I$(srcdir) -I.. -o $@ $(srcdir)/main.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) -I. -I$(srcdir) -I.. -o $@ $(srcdir)/main.c $(LIBS)
 
 check: all
 	./jupiter | grep "Hello from .*jupiter!"
@@ -37,7 +38,7 @@ clean:
 	-rm jupiter
 
 install:
-	$(INSTALL) -d $(DESTDIR)$(bindir)/jupiter
+	$(INSTALL) -d $(DESTDIR)$(bindir)
 	$(INSTALL_PROGRAM) -m 0755 jupiter $(DESTDIR)$(bindir)/jupiter
 
 uninstall:
