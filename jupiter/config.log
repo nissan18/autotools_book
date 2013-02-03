@@ -42,18 +42,18 @@ PATH: /usr/local/games
 ## Core tests. ##
 ## ----------- ##
 
-configure:2029: checking for gcc
-configure:2045: found /usr/bin/gcc
-configure:2056: result: gcc
-configure:2285: checking for C compiler version
-configure:2294: gcc --version >&5
+configure:2075: checking for gcc
+configure:2091: found /usr/bin/gcc
+configure:2102: result: gcc
+configure:2331: checking for C compiler version
+configure:2340: gcc --version >&5
 gcc (Ubuntu/Linaro 4.7.2-2ubuntu1) 4.7.2
 Copyright (C) 2012 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-configure:2305: $? = 0
-configure:2294: gcc -v >&5
+configure:2351: $? = 0
+configure:2340: gcc -v >&5
 Using built-in specs.
 COLLECT_GCC=gcc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/i686-linux-gnu/4.7/lto-wrapper
@@ -61,58 +61,91 @@ Target: i686-linux-gnu
 Configured with: ../src/configure -v --with-pkgversion='Ubuntu/Linaro 4.7.2-2ubuntu1' --with-bugurl=file:///usr/share/doc/gcc-4.7/README.Bugs --enable-languages=c,c++,go,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.7 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.7 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --enable-plugin --enable-objc-gc --enable-targets=all --disable-werror --with-arch-32=i686 --with-tune=generic --enable-checking=release --build=i686-linux-gnu --host=i686-linux-gnu --target=i686-linux-gnu
 Thread model: posix
 gcc version 4.7.2 (Ubuntu/Linaro 4.7.2-2ubuntu1) 
-configure:2305: $? = 0
-configure:2294: gcc -V >&5
+configure:2351: $? = 0
+configure:2340: gcc -V >&5
 gcc: error: unrecognized command line option '-V'
 gcc: fatal error: no input files
 compilation terminated.
-configure:2305: $? = 4
-configure:2294: gcc -qversion >&5
+configure:2351: $? = 4
+configure:2340: gcc -qversion >&5
 gcc: error: unrecognized command line option '-qversion'
 gcc: fatal error: no input files
 compilation terminated.
-configure:2305: $? = 4
-configure:2325: checking whether the C compiler works
-configure:2347: gcc    conftest.c  >&5
-configure:2351: $? = 0
-configure:2399: result: yes
-configure:2402: checking for C compiler default output file name
-configure:2404: result: a.out
-configure:2410: checking for suffix of executables
-configure:2417: gcc -o conftest    conftest.c  >&5
-configure:2421: $? = 0
-configure:2443: result: 
-configure:2465: checking whether we are cross compiling
-configure:2473: gcc -o conftest    conftest.c  >&5
-configure:2477: $? = 0
-configure:2484: ./conftest
-configure:2488: $? = 0
-configure:2503: result: no
-configure:2508: checking for suffix of object files
-configure:2530: gcc -c   conftest.c >&5
+configure:2351: $? = 4
+configure:2371: checking whether the C compiler works
+configure:2393: gcc    conftest.c  >&5
+configure:2397: $? = 0
+configure:2445: result: yes
+configure:2448: checking for C compiler default output file name
+configure:2450: result: a.out
+configure:2456: checking for suffix of executables
+configure:2463: gcc -o conftest    conftest.c  >&5
+configure:2467: $? = 0
+configure:2489: result: 
+configure:2511: checking whether we are cross compiling
+configure:2519: gcc -o conftest    conftest.c  >&5
+configure:2523: $? = 0
+configure:2530: ./conftest
 configure:2534: $? = 0
-configure:2555: result: o
-configure:2559: checking whether we are using the GNU C compiler
-configure:2578: gcc -c   conftest.c >&5
-configure:2578: $? = 0
-configure:2587: result: yes
-configure:2596: checking whether gcc accepts -g
-configure:2616: gcc -c -g  conftest.c >&5
-configure:2616: $? = 0
-configure:2657: result: yes
-configure:2674: checking for gcc option to accept ISO C89
-configure:2737: gcc  -c -g -O2  conftest.c >&5
-configure:2737: $? = 0
-configure:2750: result: none needed
-configure:2813: checking for a BSD-compatible install
-configure:2881: result: /usr/bin/install -c
-configure:2902: checking how to run the C preprocessor
-configure:2933: gcc -E  conftest.c
-configure:2933: $? = 0
-configure:2947: gcc -E  conftest.c
+configure:2549: result: no
+configure:2554: checking for suffix of object files
+configure:2576: gcc -c   conftest.c >&5
+configure:2580: $? = 0
+configure:2601: result: o
+configure:2605: checking whether we are using the GNU C compiler
+configure:2624: gcc -c   conftest.c >&5
+configure:2624: $? = 0
+configure:2633: result: yes
+configure:2642: checking whether gcc accepts -g
+configure:2662: gcc -c -g  conftest.c >&5
+configure:2662: $? = 0
+configure:2703: result: yes
+configure:2720: checking for gcc option to accept ISO C89
+configure:2783: gcc  -c -g -O2  conftest.c >&5
+configure:2783: $? = 0
+configure:2796: result: none needed
+configure:2859: checking for a BSD-compatible install
+configure:2927: result: /usr/bin/install -c
+configure:2941: checking for library containing pthread_create
+configure:2972: gcc -o conftest -g -O2   conftest.c  >&5
+/tmp/cce6JG4K.o: In function `main':
+/home/ubuntu/code/autotools/book/autotools/jupiter/conftest.c:20: undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+configure:2972: $? = 1
+configure: failed program was:
+| /* confdefs.h */
+| #define PACKAGE_NAME "Jupiter"
+| #define PACKAGE_TARNAME "jupiter"
+| #define PACKAGE_VERSION "1.0"
+| #define PACKAGE_STRING "Jupiter 1.0"
+| #define PACKAGE_BUGREPORT "jupiter-bugs@example.org"
+| #define PACKAGE_URL ""
+| /* end confdefs.h.  */
+| 
+| /* Override any GCC internal prototype to avoid an error.
+|    Use char because int might match the return type of a GCC
+|    builtin and then its argument prototype would still apply.  */
+| #ifdef __cplusplus
+| extern "C"
+| #endif
+| char pthread_create ();
+| int
+| main ()
+| {
+| return pthread_create ();
+|   ;
+|   return 0;
+| }
+configure:2972: gcc -o conftest -g -O2   conftest.c -lpthread   >&5
+configure:2972: $? = 0
+configure:2989: result: -lpthread
+configure:3004: checking how to run the C preprocessor
+configure:3035: gcc -E  conftest.c
+configure:3035: $? = 0
+configure:3049: gcc -E  conftest.c
 conftest.c:9:28: fatal error: ac_nonexistent.h: No such file or directory
 compilation terminated.
-configure:2947: $? = 1
+configure:3049: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "Jupiter"
@@ -123,13 +156,13 @@ configure: failed program was:
 | #define PACKAGE_URL ""
 | /* end confdefs.h.  */
 | #include <ac_nonexistent.h>
-configure:2972: result: gcc -E
-configure:2992: gcc -E  conftest.c
-configure:2992: $? = 0
-configure:3006: gcc -E  conftest.c
+configure:3074: result: gcc -E
+configure:3094: gcc -E  conftest.c
+configure:3094: $? = 0
+configure:3108: gcc -E  conftest.c
 conftest.c:9:28: fatal error: ac_nonexistent.h: No such file or directory
 compilation terminated.
-configure:3006: $? = 1
+configure:3108: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "Jupiter"
@@ -140,57 +173,57 @@ configure: failed program was:
 | #define PACKAGE_URL ""
 | /* end confdefs.h.  */
 | #include <ac_nonexistent.h>
-configure:3035: checking for grep that handles long lines and -e
-configure:3093: result: /bin/grep
-configure:3098: checking for egrep
-configure:3160: result: /bin/grep -E
-configure:3165: checking for ANSI C header files
-configure:3185: gcc -c -g -O2  conftest.c >&5
-configure:3185: $? = 0
-configure:3258: gcc -o conftest -g -O2   conftest.c  >&5
-configure:3258: $? = 0
-configure:3258: ./conftest
-configure:3258: $? = 0
-configure:3269: result: yes
-configure:3282: checking for sys/types.h
-configure:3282: gcc -c -g -O2  conftest.c >&5
-configure:3282: $? = 0
-configure:3282: result: yes
-configure:3282: checking for sys/stat.h
-configure:3282: gcc -c -g -O2  conftest.c >&5
-configure:3282: $? = 0
-configure:3282: result: yes
-configure:3282: checking for stdlib.h
-configure:3282: gcc -c -g -O2  conftest.c >&5
-configure:3282: $? = 0
-configure:3282: result: yes
-configure:3282: checking for string.h
-configure:3282: gcc -c -g -O2  conftest.c >&5
-configure:3282: $? = 0
-configure:3282: result: yes
-configure:3282: checking for memory.h
-configure:3282: gcc -c -g -O2  conftest.c >&5
-configure:3282: $? = 0
-configure:3282: result: yes
-configure:3282: checking for strings.h
-configure:3282: gcc -c -g -O2  conftest.c >&5
-configure:3282: $? = 0
-configure:3282: result: yes
-configure:3282: checking for inttypes.h
-configure:3282: gcc -c -g -O2  conftest.c >&5
-configure:3282: $? = 0
-configure:3282: result: yes
-configure:3282: checking for stdint.h
-configure:3282: gcc -c -g -O2  conftest.c >&5
-configure:3282: $? = 0
-configure:3282: result: yes
-configure:3282: checking for unistd.h
-configure:3282: gcc -c -g -O2  conftest.c >&5
-configure:3282: $? = 0
-configure:3282: result: yes
-configure:3296: checking for stdlib.h
-configure:3296: result: yes
-configure:3427: creating ./config.status
+configure:3137: checking for grep that handles long lines and -e
+configure:3195: result: /bin/grep
+configure:3200: checking for egrep
+configure:3262: result: /bin/grep -E
+configure:3267: checking for ANSI C header files
+configure:3287: gcc -c -g -O2  conftest.c >&5
+configure:3287: $? = 0
+configure:3360: gcc -o conftest -g -O2   conftest.c -lpthread  >&5
+configure:3360: $? = 0
+configure:3360: ./conftest
+configure:3360: $? = 0
+configure:3371: result: yes
+configure:3384: checking for sys/types.h
+configure:3384: gcc -c -g -O2  conftest.c >&5
+configure:3384: $? = 0
+configure:3384: result: yes
+configure:3384: checking for sys/stat.h
+configure:3384: gcc -c -g -O2  conftest.c >&5
+configure:3384: $? = 0
+configure:3384: result: yes
+configure:3384: checking for stdlib.h
+configure:3384: gcc -c -g -O2  conftest.c >&5
+configure:3384: $? = 0
+configure:3384: result: yes
+configure:3384: checking for string.h
+configure:3384: gcc -c -g -O2  conftest.c >&5
+configure:3384: $? = 0
+configure:3384: result: yes
+configure:3384: checking for memory.h
+configure:3384: gcc -c -g -O2  conftest.c >&5
+configure:3384: $? = 0
+configure:3384: result: yes
+configure:3384: checking for strings.h
+configure:3384: gcc -c -g -O2  conftest.c >&5
+configure:3384: $? = 0
+configure:3384: result: yes
+configure:3384: checking for inttypes.h
+configure:3384: gcc -c -g -O2  conftest.c >&5
+configure:3384: $? = 0
+configure:3384: result: yes
+configure:3384: checking for stdint.h
+configure:3384: gcc -c -g -O2  conftest.c >&5
+configure:3384: $? = 0
+configure:3384: result: yes
+configure:3384: checking for unistd.h
+configure:3384: gcc -c -g -O2  conftest.c >&5
+configure:3384: $? = 0
+configure:3384: result: yes
+configure:3398: checking for stdlib.h
+configure:3398: result: yes
+configure:3529: creating ./config.status
 
 ## ---------------------- ##
 ## Running config.status. ##
@@ -253,6 +286,7 @@ ac_cv_prog_CPP='gcc -E'
 ac_cv_prog_ac_ct_CC=gcc
 ac_cv_prog_cc_c89=
 ac_cv_prog_cc_g=yes
+ac_cv_search_pthread_create=-lpthread
 
 ## ----------------- ##
 ## Output variables. ##
@@ -274,7 +308,7 @@ INSTALL_PROGRAM='${INSTALL}'
 INSTALL_SCRIPT='${INSTALL}'
 LDFLAGS=''
 LIBOBJS=''
-LIBS=''
+LIBS='-lpthread '
 LTLIBOBJS=''
 OBJEXT='o'
 PACKAGE_BUGREPORT='jupiter-bugs@example.org'
