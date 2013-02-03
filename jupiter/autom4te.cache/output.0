@@ -2026,6 +2026,7 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
+AC_INIT_AUTOMAKE
 
 ac_config_headers="$ac_config_headers config.h"
 
