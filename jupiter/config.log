@@ -106,12 +106,12 @@ configure:2783: $? = 0
 configure:2796: result: none needed
 configure:2859: checking for a BSD-compatible install
 configure:2927: result: /usr/bin/install -c
-configure:2941: checking for library containing pthread_create
-configure:2972: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/cctFGVGC.o: In function `main':
+configure:2942: checking for library containing pthread_create
+configure:2973: gcc -o conftest -g -O2   conftest.c  >&5
+/tmp/ccxIXhFB.o: In function `main':
 /home/ubuntu/code/autotools/book/autotools/jupiter/conftest.c:20: undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-configure:2972: $? = 1
+configure:2973: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "Jupiter"
@@ -136,16 +136,16 @@ configure: failed program was:
 |   ;
 |   return 0;
 | }
-configure:2972: gcc -o conftest -g -O2   conftest.c -lpthread   >&5
-configure:2972: $? = 0
-configure:2989: result: -lpthread
-configure:3004: checking how to run the C preprocessor
-configure:3035: gcc -E  conftest.c
-configure:3035: $? = 0
-configure:3049: gcc -E  conftest.c
+configure:2973: gcc -o conftest -g -O2   conftest.c -lpthread   >&5
+configure:2973: $? = 0
+configure:2990: result: -lpthread
+configure:3005: checking how to run the C preprocessor
+configure:3036: gcc -E  conftest.c
+configure:3036: $? = 0
+configure:3050: gcc -E  conftest.c
 conftest.c:9:28: fatal error: ac_nonexistent.h: No such file or directory
 compilation terminated.
-configure:3049: $? = 1
+configure:3050: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "Jupiter"
@@ -156,13 +156,13 @@ configure: failed program was:
 | #define PACKAGE_URL ""
 | /* end confdefs.h.  */
 | #include <ac_nonexistent.h>
-configure:3074: result: gcc -E
-configure:3094: gcc -E  conftest.c
-configure:3094: $? = 0
-configure:3108: gcc -E  conftest.c
+configure:3075: result: gcc -E
+configure:3095: gcc -E  conftest.c
+configure:3095: $? = 0
+configure:3109: gcc -E  conftest.c
 conftest.c:9:28: fatal error: ac_nonexistent.h: No such file or directory
 compilation terminated.
-configure:3108: $? = 1
+configure:3109: $? = 1
 configure: failed program was:
 | /* confdefs.h */
 | #define PACKAGE_NAME "Jupiter"
@@ -173,67 +173,69 @@ configure: failed program was:
 | #define PACKAGE_URL ""
 | /* end confdefs.h.  */
 | #include <ac_nonexistent.h>
-configure:3137: checking for grep that handles long lines and -e
-configure:3195: result: /bin/grep
-configure:3200: checking for egrep
-configure:3262: result: /bin/grep -E
-configure:3267: checking for ANSI C header files
-configure:3287: gcc -c -g -O2  conftest.c >&5
-configure:3287: $? = 0
-configure:3360: gcc -o conftest -g -O2   conftest.c -lpthread  >&5
-configure:3360: $? = 0
-configure:3360: ./conftest
-configure:3360: $? = 0
-configure:3371: result: yes
-configure:3384: checking for sys/types.h
-configure:3384: gcc -c -g -O2  conftest.c >&5
-configure:3384: $? = 0
-configure:3384: result: yes
-configure:3384: checking for sys/stat.h
-configure:3384: gcc -c -g -O2  conftest.c >&5
-configure:3384: $? = 0
-configure:3384: result: yes
-configure:3384: checking for stdlib.h
-configure:3384: gcc -c -g -O2  conftest.c >&5
-configure:3384: $? = 0
-configure:3384: result: yes
-configure:3384: checking for string.h
-configure:3384: gcc -c -g -O2  conftest.c >&5
-configure:3384: $? = 0
-configure:3384: result: yes
-configure:3384: checking for memory.h
-configure:3384: gcc -c -g -O2  conftest.c >&5
-configure:3384: $? = 0
-configure:3384: result: yes
-configure:3384: checking for strings.h
-configure:3384: gcc -c -g -O2  conftest.c >&5
-configure:3384: $? = 0
-configure:3384: result: yes
-configure:3384: checking for inttypes.h
-configure:3384: gcc -c -g -O2  conftest.c >&5
-configure:3384: $? = 0
-configure:3384: result: yes
-configure:3384: checking for stdint.h
-configure:3384: gcc -c -g -O2  conftest.c >&5
-configure:3384: $? = 0
-configure:3384: result: yes
-configure:3384: checking for unistd.h
-configure:3384: gcc -c -g -O2  conftest.c >&5
-configure:3384: $? = 0
-configure:3384: result: yes
-configure:3399: checking for stdlib.h
-configure:3399: result: yes
-configure:3399: checking pthread.h usability
-configure:3399: gcc -c -g -O2  conftest.c >&5
-configure:3399: $? = 0
-configure:3399: result: yes
-configure:3399: checking pthread.h presence
-configure:3399: gcc -E  conftest.c
-configure:3399: $? = 0
-configure:3399: result: yes
-configure:3399: checking for pthread.h
-configure:3399: result: yes
-configure:3530: creating ./config.status
+configure:3138: checking for grep that handles long lines and -e
+configure:3196: result: /bin/grep
+configure:3201: checking for egrep
+configure:3263: result: /bin/grep -E
+configure:3268: checking for ANSI C header files
+configure:3288: gcc -c -g -O2  conftest.c >&5
+configure:3288: $? = 0
+configure:3361: gcc -o conftest -g -O2   conftest.c -lpthread  >&5
+configure:3361: $? = 0
+configure:3361: ./conftest
+configure:3361: $? = 0
+configure:3372: result: yes
+configure:3385: checking for sys/types.h
+configure:3385: gcc -c -g -O2  conftest.c >&5
+configure:3385: $? = 0
+configure:3385: result: yes
+configure:3385: checking for sys/stat.h
+configure:3385: gcc -c -g -O2  conftest.c >&5
+configure:3385: $? = 0
+configure:3385: result: yes
+configure:3385: checking for stdlib.h
+configure:3385: gcc -c -g -O2  conftest.c >&5
+configure:3385: $? = 0
+configure:3385: result: yes
+configure:3385: checking for string.h
+configure:3385: gcc -c -g -O2  conftest.c >&5
+configure:3385: $? = 0
+configure:3385: result: yes
+configure:3385: checking for memory.h
+configure:3385: gcc -c -g -O2  conftest.c >&5
+configure:3385: $? = 0
+configure:3385: result: yes
+configure:3385: checking for strings.h
+configure:3385: gcc -c -g -O2  conftest.c >&5
+configure:3385: $? = 0
+configure:3385: result: yes
+configure:3385: checking for inttypes.h
+configure:3385: gcc -c -g -O2  conftest.c >&5
+configure:3385: $? = 0
+configure:3385: result: yes
+configure:3385: checking for stdint.h
+configure:3385: gcc -c -g -O2  conftest.c >&5
+configure:3385: $? = 0
+configure:3385: result: yes
+configure:3385: checking for unistd.h
+configure:3385: gcc -c -g -O2  conftest.c >&5
+configure:3385: $? = 0
+configure:3385: result: yes
+configure:3400: checking for stdlib.h
+configure:3400: result: yes
+configure:3400: checking pthread.h usability
+configure:3400: gcc -c -g -O2  conftest.c >&5
+configure:3400: $? = 0
+configure:3400: result: yes
+configure:3400: checking pthread.h presence
+configure:3400: gcc -E  conftest.c
+configure:3400: $? = 0
+configure:3400: result: yes
+configure:3400: checking for pthread.h
+configure:3400: result: yes
+configure:3414: checking for pthread.h
+configure:3414: result: yes
+configure:3561: creating ./config.status
 
 ## ---------------------- ##
 ## Running config.status. ##
@@ -250,9 +252,10 @@ generated by GNU Autoconf 2.69.  Invocation command line was
 
 on ubuntu
 
-config.status:804: creating Makefile
-config.status:804: creating src/Makefile
-config.status:804: creating config.h
+config.status:805: creating Makefile
+config.status:805: creating src/Makefile
+config.status:805: creating config.h
+config.status:980: config.h is unchanged
 
 ## ---------------- ##
 ## Cache variables. ##
@@ -378,6 +381,7 @@ target_alias=''
 #define HAVE_STDINT_H 1
 #define HAVE_UNISTD_H 1
 #define HAVE_STDLIB_H 1
+#define HAVE_PTHREAD_H 1
 #define HAVE_PTHREAD_H 1
 
 configure: exit 0

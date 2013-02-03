@@ -2937,6 +2937,7 @@ test -z "$INSTALL_DATA" && INSTALL_DATA='${INSTALL} -m 644'
 
 
 # Checks for libraries.
+have_pthreads=no
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing pthread_create" >&5
 $as_echo_n "checking for library containing pthread_create... " >&6; }
@@ -2991,7 +2992,7 @@ $as_echo "$ac_cv_search_pthread_create" >&6; }
 ac_res=$ac_cv_search_pthread_create
 if test "$ac_res" != no; then :
   test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
-
+  have_pthreads=yes
 fi
 
 
@@ -3406,6 +3407,36 @@ fi
 
 done
 
+
+if test "x${have_pthreads}" = xyes; then
+	for ac_header in pthread.h
+do :
+  ac_fn_c_check_header_mongrel "$LINENO" "pthread.h" "ac_cv_header_pthread_h" "$ac_includes_default"
+if test "x$ac_cv_header_pthread_h" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_PTHREAD_H 1
+_ACEOF
+
+else
+  have_pthreads=no
+fi
+
+done
+
+fi
+
+if test "x${have_pthreads}" = xno; then
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING:
+	------------------------------------------
+	 Unable to find pthreads on this system.
+	 Building a single-threaded version.
+	------------------------------------------" >&5
+$as_echo "$as_me: WARNING:
+	------------------------------------------
+	 Unable to find pthreads on this system.
+	 Building a single-threaded version.
+	------------------------------------------" >&2;}
+fi
 
 # Checks for typedefs, structures, and compiler characteristics.
 

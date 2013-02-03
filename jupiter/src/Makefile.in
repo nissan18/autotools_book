@@ -17,6 +17,7 @@ VPATH		= @srcdir@
 
 # Tool-specific substitution variables
 CC		= @CC@
+DEFS		= @DEFS@
 LIBS		= @LIBS@
 CFLAGS		= @CFLAGS@
 CPPFLAGS	= @CPPFLAGS@
@@ -28,7 +29,7 @@ INSTALL_SCRIPT	= @INSTALL_SCRIPT@
 all: jupiter
 
 jupiter: main.c
-	$(CC) $(CPPFLAGS) $(CFLAGS) -I. -I$(srcdir) -I.. -o $@ $(srcdir)/main.c $(LIBS)
+	$(CC) $(CFLAGS) $(DEFS) $(CPPFLAGS) -I. -I$(srcdir) -I.. -o $@ $(srcdir)/main.c $(LIBS)
 
 check: all
 	./jupiter | grep "Hello from .*jupiter!"
