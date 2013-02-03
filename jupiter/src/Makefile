@@ -18,7 +18,7 @@ srcdir		= .
 # Tool-specific substitution variables
 CC		= gcc
 DEFS		= -DHAVE_CONFIG_H
-LIBS		= -lpthread 
+LIBS		= -lpthread -lpthread 
 CFLAGS		= -g -O2
 CPPFLAGS	= 
 INSTALL		= /usr/bin/install -c

@@ -678,6 +678,7 @@ SHELL'
 ac_subst_files=''
 ac_user_opts='
 enable_option_checking
+enable_async_exec
 '
       ac_precious_vars='build_alias
 host_alias
@@ -1292,6 +1293,12 @@ if test -n "$ac_init_help"; then
      short | recursive ) echo "Configuration of Jupiter 1.0:";;
    esac
   cat <<\_ACEOF
+
+Optional Features:
+  --disable-option-checking  ignore unrecognized --enable/--with options
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+  --disable-async-exec    disable async execution feature
 
 Some influential environment variables:
   CC          C compiler command
@@ -2991,7 +2998,7 @@ $as_echo "$ac_cv_search_pthread_create" >&6; }
 ac_res=$ac_cv_search_pthread_create
 if test "$ac_res" != no; then :
   test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
-
+  have_pthreads=yes
 fi
 
 
@@ -3406,6 +3413,112 @@ fi
 
 done
 
+
+# Checks for command-line options.
+# Check whether --enable-async_exec was given.
+if test "${enable_async_exec+set}" = set; then :
+  enableval=$enable_async_exec; async_exec=${enableval}
+else
+  async_exec=yes
+fi
+
+
+if test "x${async_exec}" = xyes; then
+	have_pthreads=no
+	{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing pthread_create" >&5
+$as_echo_n "checking for library containing pthread_create... " >&6; }
+if ${ac_cv_search_pthread_create+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_func_search_save_LIBS=$LIBS
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char pthread_create ();
+int
+main ()
+{
+return pthread_create ();
+  ;
+  return 0;
+}
+_ACEOF
+for ac_lib in '' pthread; do
+  if test -z "$ac_lib"; then
+    ac_res="none required"
+  else
+    ac_res=-l$ac_lib
+    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+  fi
+  if ac_fn_c_try_link "$LINENO"; then :
+  ac_cv_search_pthread_create=$ac_res
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext
+  if ${ac_cv_search_pthread_create+:} false; then :
+  break
+fi
+done
+if ${ac_cv_search_pthread_create+:} false; then :
+
+else
+  ac_cv_search_pthread_create=no
+fi
+rm conftest.$ac_ext
+LIBS=$ac_func_search_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_search_pthread_create" >&5
+$as_echo "$ac_cv_search_pthread_create" >&6; }
+ac_res=$ac_cv_search_pthread_create
+if test "$ac_res" != no; then :
+  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
+  have_pthreads=yes
+fi
+
+
+	if test "x${have_pthreads}" = xyes; then
+		for ac_header in pthread.h
+do :
+  ac_fn_c_check_header_mongrel "$LINENO" "pthread.h" "ac_cv_header_pthread_h" "$ac_includes_default"
+if test "x$ac_cv_header_pthread_h" = xyes; then :
+  cat >>confdefs.h <<_ACEOF
+#define HAVE_PTHREAD_H 1
+_ACEOF
+
+else
+  have_pthreads=no
+fi
+
+done
+
+	fi
+
+	if test "x${have_pthreads}" = no; then
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING:
+	------------------------------------------
+	 Unable to find pthreads on this system.
+	 Building a signle-threaded version.
+	------------------------------------------" >&5
+$as_echo "$as_me: WARNING:
+	------------------------------------------
+	 Unable to find pthreads on this system.
+	 Building a signle-threaded version.
+	------------------------------------------" >&2;}
+		async_exec=no
+	fi
+fi
+
+if test "x${async_exec}" = xyes; then
+
+$as_echo "#define ASYNC_EXEC 1" >>confdefs.h
+
+fi
 
 # Checks for typedefs, structures, and compiler characteristics.
 

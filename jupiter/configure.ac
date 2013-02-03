@@ -11,7 +11,6 @@ AC_PROG_CC
 AC_PROG_INSTALL
 
 # Checks for libraries.
-have_pthreads=no
 AC_SEARCH_LIBS([pthread_create], [pthread], [have_pthreads=yes])
 
 # Checks for header files.
@@ -22,20 +21,22 @@ AC_ARG_ENABLE([async_exec],
 	[  --disable-async-exec    disable async execution feature],
 	[async_exec=${enableval}], [async_exec=yes])
 
-if test "x${have_pthreads}" = xyes; then
-	AC_CHECK_HEADERS([pthread.h], [], [have_pthreads=no])
-fi
+if test "x${async_exec}" = xyes; then
+	have_pthreads=no
+	AC_SEARCH_LIBS([pthread_create], [pthread], [have_pthreads=yes])
 
-if test "x${have_pthreads}" = xno; then
-	if test "x${async_exec}" = xyes; then
+	if test "x${have_pthreads}" = xyes; then
+		AC_CHECK_HEADERS([pthread.h], [], [have_pthreads=no])
+	fi
+
+	if test "x${have_pthreads}" = no; then
 		AC_MSG_WARN([
 	------------------------------------------
-	 The pthread library and header file
-	 required to build jupiter. Stopping...
-	 Check 'config.log' for more information.
+	 Unable to find pthreads on this system.
+	 Building a signle-threaded version.
 	------------------------------------------])
+		async_exec=no
 	fi
-	async_exec=no
 fi
 
 if test "x${async_exec}" = xyes; then
