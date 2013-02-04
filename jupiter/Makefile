@@ -165,6 +165,7 @@ PACKAGE_TARNAME = jupiter
 PACKAGE_URL = 
 PACKAGE_VERSION = 1.0
 PATH_SEPARATOR = :
+RANLIB = ranlib
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = 
@@ -211,7 +212,7 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-SUBDIRS = src
+SUBDIRS = common src
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
