@@ -123,7 +123,7 @@ configure:3435: checking dependency style of gcc
 configure:3546: result: gcc3
 configure:3565: checking for library containing pthread_create
 configure:3596: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/cc8MUiRb.o: In function `main':
+/tmp/ccOK15yK.o: In function `main':
 /home/ubuntu/code/autotools/book/autotools/jupiter/conftest.c:22: undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
 configure:3596: $? = 1
@@ -278,6 +278,7 @@ on ubuntu
 config.status:853: creating Makefile
 config.status:853: creating src/Makefile
 config.status:853: creating config.h
+config.status:1034: config.h is unchanged
 config.status:1082: executing depfiles commands
 
 ## ---------------- ##
