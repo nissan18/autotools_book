@@ -1,0 +1,6 @@
+libjupiter_la-jup_print.lo: jup_print.c ../include/libjupiter.h \
+ ../common/jupcommon.h
+
+../include/libjupiter.h:
+
+../common/jupcommon.h:
