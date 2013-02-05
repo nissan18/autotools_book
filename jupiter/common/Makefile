@@ -65,7 +65,7 @@ LIBRARIES = $(noinst_LIBRARIES)
 ARFLAGS = cru
 libjupcommon_a_AR = $(AR) $(ARFLAGS)
 libjupcommon_a_LIBADD =
-am_libjupcommon_a_OBJECTS = print.$(OBJEXT)
+am_libjupcommon_a_OBJECTS = libjupcommon_a-print.$(OBJEXT)
 libjupcommon_a_OBJECTS = $(am_libjupcommon_a_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -205,6 +205,7 @@ top_builddir = ..
 top_srcdir = ..
 noinst_LIBRARIES = libjupcommon.a
 libjupcommon_a_SOURCES = jupcommon.h print.c
+libjupcommon_a_CFLAGS = -fPIC
 all: all-am
 
 .SUFFIXES:
@@ -253,7 +254,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-include ./$(DEPDIR)/print.Po
+include ./$(DEPDIR)/libjupcommon_a-print.Po
 
 .c.o:
 	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -275,6 +276,20 @@ include ./$(DEPDIR)/print.Po
 #	source='$<' object='$@' libtool=yes \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(LTCOMPILE) -c -o $@ $<
+
+libjupcommon_a-print.o: print.c
+	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libjupcommon_a_CFLAGS) $(CFLAGS) -MT libjupcommon_a-print.o -MD -MP -MF $(DEPDIR)/libjupcommon_a-print.Tpo -c -o libjupcommon_a-print.o `test -f 'print.c' || echo '$(srcdir)/'`print.c
+	$(am__mv) $(DEPDIR)/libjupcommon_a-print.Tpo $(DEPDIR)/libjupcommon_a-print.Po
+#	source='print.c' object='libjupcommon_a-print.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libjupcommon_a_CFLAGS) $(CFLAGS) -c -o libjupcommon_a-print.o `test -f 'print.c' || echo '$(srcdir)/'`print.c
+
+libjupcommon_a-print.obj: print.c
+	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libjupcommon_a_CFLAGS) $(CFLAGS) -MT libjupcommon_a-print.obj -MD -MP -MF $(DEPDIR)/libjupcommon_a-print.Tpo -c -o libjupcommon_a-print.obj `if test -f 'print.c'; then $(CYGPATH_W) 'print.c'; else $(CYGPATH_W) '$(srcdir)/print.c'; fi`
+	$(am__mv) $(DEPDIR)/libjupcommon_a-print.Tpo $(DEPDIR)/libjupcommon_a-print.Po
+#	source='print.c' object='libjupcommon_a-print.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libjupcommon_a_CFLAGS) $(CFLAGS) -c -o libjupcommon_a-print.obj `if test -f 'print.c'; then $(CYGPATH_W) 'print.c'; else $(CYGPATH_W) '$(srcdir)/print.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo
