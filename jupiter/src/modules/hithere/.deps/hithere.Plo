@@ -1,0 +1,3 @@
+hithere.lo: hithere.c ../../module.h
+
+../../module.h:

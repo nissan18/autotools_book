@@ -1,1 +1,1 @@
-./jupiter | grep "Hello from .*jupiter!"
+./jupiter | grep ".* from .*jupiter!"

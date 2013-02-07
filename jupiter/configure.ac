@@ -19,7 +19,7 @@ AC_PROG_CC_C_O
 AC_SEARCH_LIBS([pthread_create], [pthread], [have_pthreads=yes])
 
 # Checks for header files.
-AC_CHECK_HEADERS([stdlib.h pthread.h])
+AC_CHECK_HEADERS([stdlib.h pthread.h dlfcn.h])
 
 # Checks for command-line options.
 AC_ARG_ENABLE([async_exec],
@@ -52,10 +52,23 @@ fi
 # Checks for typedefs, structures, and compiler characteristics.
 
 # Checks for library functions.
+AC_SEARCH_LIBS([dlopen], [dl])
+
+echo \
+"------------------------------------------------
+
+ $(PACKAGE_NAME) Version $(PACKAGE_VERSION)
+
+ Prefix: '${prefix}'.
+ Compiler: '${CC} ${CFLAGS} ${CPPFLAGS}'
+ Libraries: '${LIBS}'
+"
+
 
 AC_CONFIG_FILES([Makefile
                  common/Makefile
                  include/Makefile
                  libjup/Makefile
-                 src/Makefile])
+                 src/Makefile
+                 src/modules/hithere/Makefile])
 AC_OUTPUT
