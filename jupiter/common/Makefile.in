@@ -61,12 +61,10 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-LIBRARIES = $(noinst_LIBRARIES)
-ARFLAGS = cru
-libjupcommon_a_AR = $(AR) $(ARFLAGS)
-libjupcommon_a_LIBADD =
-am_libjupcommon_a_OBJECTS = libjupcommon_a-print.$(OBJEXT)
-libjupcommon_a_OBJECTS = $(am_libjupcommon_a_OBJECTS)
+LTLIBRARIES = $(noinst_LTLIBRARIES)
+libjupcommon_la_LIBADD =
+am_libjupcommon_la_OBJECTS = print.lo
+libjupcommon_la_OBJECTS = $(am_libjupcommon_la_OBJECTS)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -80,8 +78,8 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
-SOURCES = $(libjupcommon_a_SOURCES)
-DIST_SOURCES = $(libjupcommon_a_SOURCES)
+SOURCES = $(libjupcommon_la_SOURCES)
+DIST_SOURCES = $(libjupcommon_la_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -203,9 +201,8 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-noinst_LIBRARIES = libjupcommon.a
-libjupcommon_a_SOURCES = jupcommon.h print.c
-libjupcommon_a_CFLAGS = -fPIC
+noinst_LTLIBRARIES = libjupcommon.la
+libjupcommon_la_SOURCES = jupcommon.h print.c
 all: all-am
 
 .SUFFIXES:
@@ -241,12 +238,16 @@ $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 
-clean-noinstLIBRARIES:
-	-test -z "$(noinst_LIBRARIES)" || rm -f $(noinst_LIBRARIES)
-libjupcommon.a: $(libjupcommon_a_OBJECTS) $(libjupcommon_a_DEPENDENCIES) $(EXTRA_libjupcommon_a_DEPENDENCIES) 
-	-rm -f libjupcommon.a
-	$(libjupcommon_a_AR) libjupcommon.a $(libjupcommon_a_OBJECTS) $(libjupcommon_a_LIBADD)
-	$(RANLIB) libjupcommon.a
+clean-noinstLTLIBRARIES:
+	-test -z "$(noinst_LTLIBRARIES)" || rm -f $(noinst_LTLIBRARIES)
+	@list='$(noinst_LTLIBRARIES)'; for p in $$list; do \
+	  dir="`echo $$p | sed -e 's|/[^/]*$$||'`"; \
+	  test "$$dir" != "$$p" || dir=.; \
+	  echo "rm -f \"$${dir}/so_locations\""; \
+	  rm -f "$${dir}/so_locations"; \
+	done
+libjupcommon.la: $(libjupcommon_la_OBJECTS) $(libjupcommon_la_DEPENDENCIES) $(EXTRA_libjupcommon_la_DEPENDENCIES) 
+	$(LINK)  $(libjupcommon_la_OBJECTS) $(libjupcommon_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -254,7 +255,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libjupcommon_a-print.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/print.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -276,20 +277,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ $<
-
-libjupcommon_a-print.o: print.c
-@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libjupcommon_a_CFLAGS) $(CFLAGS) -MT libjupcommon_a-print.o -MD -MP -MF $(DEPDIR)/libjupcommon_a-print.Tpo -c -o libjupcommon_a-print.o `test -f 'print.c' || echo '$(srcdir)/'`print.c
-@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/libjupcommon_a-print.Tpo $(DEPDIR)/libjupcommon_a-print.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='print.c' object='libjupcommon_a-print.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libjupcommon_a_CFLAGS) $(CFLAGS) -c -o libjupcommon_a-print.o `test -f 'print.c' || echo '$(srcdir)/'`print.c
-
-libjupcommon_a-print.obj: print.c
-@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libjupcommon_a_CFLAGS) $(CFLAGS) -MT libjupcommon_a-print.obj -MD -MP -MF $(DEPDIR)/libjupcommon_a-print.Tpo -c -o libjupcommon_a-print.obj `if test -f 'print.c'; then $(CYGPATH_W) 'print.c'; else $(CYGPATH_W) '$(srcdir)/print.c'; fi`
-@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/libjupcommon_a-print.Tpo $(DEPDIR)/libjupcommon_a-print.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='print.c' object='libjupcommon_a-print.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libjupcommon_a_CFLAGS) $(CFLAGS) -c -o libjupcommon_a-print.obj `if test -f 'print.c'; then $(CYGPATH_W) 'print.c'; else $(CYGPATH_W) '$(srcdir)/print.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -381,7 +368,7 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(LIBRARIES)
+all-am: Makefile $(LTLIBRARIES)
 installdirs:
 install: install-am
 install-exec: install-exec-am
@@ -415,7 +402,7 @@ maintainer-clean-generic:
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-am
 
-clean-am: clean-generic clean-libtool clean-noinstLIBRARIES \
+clean-am: clean-generic clean-libtool clean-noinstLTLIBRARIES \
 	mostlyclean-am
 
 distclean: distclean-am
@@ -487,7 +474,7 @@ uninstall-am:
 .MAKE: install-am install-strip
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
-	clean-libtool clean-noinstLIBRARIES ctags distclean \
+	clean-libtool clean-noinstLTLIBRARIES ctags distclean \
 	distclean-compile distclean-generic distclean-libtool \
 	distclean-tags distdir dvi dvi-am html html-am info info-am \
 	install install-am install-data install-data-am install-dvi \
