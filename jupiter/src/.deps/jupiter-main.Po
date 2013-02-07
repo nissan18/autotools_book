@@ -1,33 +1,7 @@
-jupiter-main.o: main.c ../include/libjupiter.h module.h ../config.h \
- /usr/include/dlfcn.h /usr/include/features.h \
- /usr/include/i386-linux-gnu/bits/predefs.h \
- /usr/include/i386-linux-gnu/sys/cdefs.h \
- /usr/include/i386-linux-gnu/bits/wordsize.h \
- /usr/include/i386-linux-gnu/gnu/stubs.h \
- /usr/include/i386-linux-gnu/gnu/stubs-32.h \
- /usr/lib/gcc/i686-linux-gnu/4.7/include/stddef.h \
- /usr/include/i386-linux-gnu/bits/dlfcn.h
+jupiter-main.o: main.c ../include/libjupiter.h module.h ../config.h
 
 ../include/libjupiter.h:
 
 module.h:
 
 ../config.h:
-
-/usr/include/dlfcn.h:
-
-/usr/include/features.h:
-
-/usr/include/i386-linux-gnu/bits/predefs.h:
-
-/usr/include/i386-linux-gnu/sys/cdefs.h:
-
-/usr/include/i386-linux-gnu/bits/wordsize.h:
-
-/usr/include/i386-linux-gnu/gnu/stubs.h:
-
-/usr/include/i386-linux-gnu/gnu/stubs-32.h:
-
-/usr/lib/gcc/i686-linux-gnu/4.7/include/stddef.h:
-
-/usr/include/i386-linux-gnu/bits/dlfcn.h:

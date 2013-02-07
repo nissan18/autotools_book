@@ -52,7 +52,7 @@ fi
 # Checks for typedefs, structures, and compiler characteristics.
 
 # Checks for library functions.
-AC_SEARCH_LIBS([dlopen], [dl])
+AC_SEARCH_LIBS([lt_dlopen], [ltdl])
 
 echo \
 "------------------------------------------------

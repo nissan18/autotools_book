@@ -17,15 +17,15 @@ old_library='libjupcommon.a'
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' -lpthread'
+dependency_libs=' /usr/lib/i386-linux-gnu/libltdl.la -ldl -lpthread'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
 
 # Version information for libjupcommon.
-current=
-age=
-revision=
+current=10
+age=3
+revision=0
 
 # Is this an already installed library?
 installed=no
